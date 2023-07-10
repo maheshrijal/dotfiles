@@ -61,6 +61,12 @@ set showmatch
 " Set text encoding as utf8
 set encoding=utf8
 
+" Set shift width to 4 spaces.
+set shiftwidth=4
+
+" Set tab width to 4 columns.
+set tabstop=4
+
 " No end-of-line character
 set noendofline
 
@@ -109,7 +115,7 @@ set statusline+=\ %F\ %M\ %Y\ %R
 set statusline+=%=
 
 " Status line right side.
-"set statusline+=\ row:\ %l\ col:\ %c\ percent:\ %p%%
+set statusline+=\ ascii:\ %b\ hex:\ 0x%B\ row:\ %l\ col:\ %c\ percent:\ %p%%
 
 " Show the status on the second to last line.
 set laststatus=2

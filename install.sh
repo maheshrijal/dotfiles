@@ -11,10 +11,13 @@ cp .vimrc ~/.vimrc
 
 echo "Dotfiles installation complete!"
 
+if grep -qi Microsoft /proc/version; then
+    echo "Skipping font installation on WSL"
+else
+    # Install JetBrains Mono font
+    echo "Installing JetBrains Mono font..."
 
-# Install JetBrains Mono font
-echo "Installing JetBrains Mono font..."
+    /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/JetBrains/JetBrainsMono/master/install_manual.sh)"
 
-/bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/JetBrains/JetBrainsMono/master/install_manual.sh)"
-
-echo "JetBrains Mono font installation complete!"
+    echo "JetBrains Mono font installation complete!"
+fi
