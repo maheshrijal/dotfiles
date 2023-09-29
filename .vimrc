@@ -10,8 +10,8 @@
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
 
-" Show absolute line numbers on the left.
-set number
+" Show relative line numbers on the left.
+:set relativenumber
 
 " Enable type file detection. Vim will be able to try to detect the type of file in use.
 filetype on
