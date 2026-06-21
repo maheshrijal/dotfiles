@@ -4,13 +4,6 @@
     "pr": ""
   },
   "permissions": {
-    "allow": [
-      "Bash(npx tsc:*)",
-      "Bash(echo \"EXIT=$?\")",
-      "Bash(npm run:*)",
-      "Bash(npm test:*)",
-      "Bash(gh pr *)"
-    ],
     "defaultMode": "bypassPermissions"
   },
   "statusLine": {
