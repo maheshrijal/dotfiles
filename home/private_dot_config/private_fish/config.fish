@@ -28,8 +28,6 @@ if status is-interactive
     # claude
     abbr -a cs 'claude --model claude-sonnet-4-6'
     abbr -a co 'claude --model claude-opus-4-8'
-    abbr -a ccusage 'bunx ccusage'
-    abbr -a ccusage-codex 'bunx @ccusage/codex@latest'
 
     # eza
     if command -q eza
