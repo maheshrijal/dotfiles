@@ -1,6 +1,3 @@
-# Repo meta — keep in the repo, never apply to $HOME
-README.md
-
 # Machine-local fish state — never replicate
 .config/fish/fish_variables
 .config/fish/completions

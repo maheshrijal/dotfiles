@@ -26,12 +26,18 @@ chezmoi cd                                # jump to the source repo, then git pu
 
 `chezmoi re-add` picks up changes you made directly to a live tracked file.
 
-## What's tracked
+## Repo layout
 
-- `dot_config/fish/` — `config.fish`, `conf.d/`, autoloaded `functions/`
-- `dot_config/starship.toml`, `dot_config/git/ignore`
-- `dot_gitconfig.tmpl` — `gpg.program` is templated per-OS
-- `dot_vimrc`
+Dotfiles live under `home/` — chezmoi's source root, set via the `.chezmoiroot`
+file — so the repo root holds only meta (`README`, `.gitignore`). The `home/`
+tree mirrors `$HOME` exactly (`private_` prefixes just preserve `0700` perms).
+
+## What's tracked (→ target in `$HOME`)
+
+- `~/.config/fish/` — `config.fish`, `conf.d/`, autoloaded `functions/`
+- `~/.config/starship.toml`
+- `~/.config/git/config` (XDG; `gpg.program` templated per-OS) + `~/.config/git/ignore`
+- `~/.config/vim/vimrc` (XDG; needs Vim ≥ 9.1.0327)
 
 ## What's deliberately NOT tracked (see `.chezmoiignore`)
 
