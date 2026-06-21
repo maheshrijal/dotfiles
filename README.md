@@ -1,19 +1,48 @@
 # dotfiles
 
-Personal dotfiles managed with [chezmoi](https://chezmoi.io). macOS + fish.
+Personal dotfiles managed with [chezmoi](https://chezmoi.io). macOS/Linux + fish.
 
 ## New machine
+
+### macOS
 
 ```sh
 brew install chezmoi
 git clone git@github.com:maheshrijal/dotfiles.git ~/code/dotfiles
-chezmoi init --source ~/code/dotfiles   # prompts for this machine's GPG signing key
+chezmoi init --source ~/code/dotfiles
 chezmoi apply
 ```
 
+### Linux
+
+```sh
+sudo apt-get update
+sudo apt-get install -y build-essential procps curl file git gpg
+/bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
+eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"
+sh -c "$(curl -fsLS get.chezmoi.io)" -- -b ~/.local/bin
+git clone git@github.com:maheshrijal/dotfiles.git ~/code/dotfiles
+~/.local/bin/chezmoi init --source ~/code/dotfiles
+~/.local/bin/chezmoi apply
+```
+
 `init` reads `.chezmoiroot` (→ `home/`) and generates `~/.config/chezmoi/chezmoi.toml`,
-pinning `sourceDir` to the clone and prompting once (`promptStringOnce`) for the
-**per-machine** GPG signing key. Re-run `chezmoi init` anytime to re-prompt.
+pinning `sourceDir` to the clone.
+
+## Git signing
+
+Git commit signing is deliberately deferred on new machines. Bootstrap first,
+then import or create a GPG key. Once `gpg --list-secret-keys --keyid-format=long`
+shows the signing key, add it to `~/.config/chezmoi/chezmoi.toml`:
+
+```toml
+[data]
+    gitSigningKey = "YOUR_KEY_FINGERPRINT"
+```
+
+Then run `chezmoi apply`. The generated Git config will only set
+`user.signingkey`, `gpg.program`, `commit.gpgsign`, and `tag.gpgsign` when that
+machine-local key is present.
 
 ## Day-to-day
 
@@ -36,19 +65,18 @@ tree mirrors `$HOME` exactly (`private_` prefixes just preserve `0700` perms).
 
 - `~/.config/fish/` — `config.fish`, `conf.d/`, autoloaded `functions/`
 - `~/.config/starship.toml`
-- `~/.config/git/config` (XDG; `gpg.program` templated per-OS, `signingkey` prompted per-machine) + `~/.config/git/ignore`
+- `~/.config/git/config` (XDG; commit signing enabled only when `gitSigningKey` is configured) + `~/.config/git/ignore`
 - `~/.config/vim/vimrc` (XDG; needs Vim ≥ 9.1.0327)
 - `~/.Brewfile` — Homebrew package manifest (see below)
 
 ## Packages
 
 `~/.Brewfile` lists the Homebrew formulae to install. The
-`run_onchange_after_install-packages.sh` script runs `brew bundle --global
---no-upgrade` on every `chezmoi apply`, so a fresh machine installs everything
-missing, and the script re-runs automatically whenever the Brewfile changes
-(it's keyed to the file's hash). `--no-upgrade` means it only installs what's
-absent — it never upgrades or uninstalls. Add/remove a `brew "..."` line and
-`chezmoi apply` to sync.
+`run_onchange_after_install-packages.sh` script runs `brew bundle install
+--global --no-upgrade` on every `chezmoi apply`, so a fresh machine installs
+everything missing, and the script re-runs automatically whenever the Brewfile
+changes. `--no-upgrade` means it only installs what's absent — it never upgrades
+or uninstalls. Add/remove a `brew "..."` line and `chezmoi apply` to sync.
 
 ## What's deliberately NOT tracked (see `.chezmoiignore`)
 
