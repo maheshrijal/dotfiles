@@ -6,14 +6,14 @@ Personal dotfiles managed with [chezmoi](https://chezmoi.io). macOS + fish.
 
 ```sh
 brew install chezmoi
-chezmoi init --apply maheshrijal
+git clone git@github.com:maheshrijal/dotfiles.git ~/code/maheshrijal/dotfiles
+chezmoi init --source ~/code/maheshrijal/dotfiles   # prompts for this machine's GPG signing key
+chezmoi apply
 ```
 
-The source dir is pinned to `~/code/maheshrijal/dotfiles` via `~/.config/chezmoi/chezmoi.toml`:
-
-```toml
-sourceDir = "/Users/mahesh/code/maheshrijal/dotfiles"
-```
+`init` reads `.chezmoiroot` (→ `home/`) and generates `~/.config/chezmoi/chezmoi.toml`,
+pinning `sourceDir` to the clone and prompting once (`promptStringOnce`) for the
+**per-machine** GPG signing key. Re-run `chezmoi init` anytime to re-prompt.
 
 ## Day-to-day
 
@@ -36,7 +36,7 @@ tree mirrors `$HOME` exactly (`private_` prefixes just preserve `0700` perms).
 
 - `~/.config/fish/` — `config.fish`, `conf.d/`, autoloaded `functions/`
 - `~/.config/starship.toml`
-- `~/.config/git/config` (XDG; `gpg.program` templated per-OS) + `~/.config/git/ignore`
+- `~/.config/git/config` (XDG; `gpg.program` templated per-OS, `signingkey` prompted per-machine) + `~/.config/git/ignore`
 - `~/.config/vim/vimrc` (XDG; needs Vim ≥ 9.1.0327)
 
 ## What's deliberately NOT tracked (see `.chezmoiignore`)

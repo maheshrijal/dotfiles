@@ -1,7 +1,7 @@
 [user]
 	name = maheshrijal
 	email = 62394512+maheshrijal@users.noreply.github.com
-	signingkey = 9178A8566B1A60AEF81A9740BBE8647CF11F580D
+	signingkey = {{ .gitSigningKey }}
 [gpg]
 	program = {{ if eq .chezmoi.os "darwin" }}/opt/homebrew/bin/gpg{{ else }}/usr/bin/gpg{{ end }}
 [commit]
