@@ -1,0 +1,22 @@
+#!/bin/sh
+# Install Homebrew packages from ~/.Brewfile.
+# This script re-runs automatically whenever the Brewfile changes (hash below).
+# Brewfile hash: {{ include "dot_Brewfile" | sha256sum }}
+set -eu
+
+# Ensure Homebrew is on PATH — chezmoi scripts run in a non-interactive shell
+# that usually hasn't sourced the brew shellenv.
+if [ -x /opt/homebrew/bin/brew ]; then
+	eval "$(/opt/homebrew/bin/brew shellenv)"
+elif [ -x /usr/local/bin/brew ]; then
+	eval "$(/usr/local/bin/brew shellenv)"
+fi
+
+if ! command -v brew >/dev/null 2>&1; then
+	echo "install-packages: Homebrew not found — install it from https://brew.sh, then rerun 'chezmoi apply'." >&2
+	exit 1
+fi
+
+echo "==> brew bundle: installing missing packages from ~/.Brewfile"
+# --no-upgrade: only install what's missing; never upgrade or uninstall.
+brew bundle install --global --no-upgrade

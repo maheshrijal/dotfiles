@@ -38,6 +38,17 @@ tree mirrors `$HOME` exactly (`private_` prefixes just preserve `0700` perms).
 - `~/.config/starship.toml`
 - `~/.config/git/config` (XDG; `gpg.program` templated per-OS, `signingkey` prompted per-machine) + `~/.config/git/ignore`
 - `~/.config/vim/vimrc` (XDG; needs Vim ≥ 9.1.0327)
+- `~/.Brewfile` — Homebrew package manifest (see below)
+
+## Packages
+
+`~/.Brewfile` lists the Homebrew formulae to install. The
+`run_onchange_after_install-packages.sh` script runs `brew bundle --global
+--no-upgrade` on every `chezmoi apply`, so a fresh machine installs everything
+missing, and the script re-runs automatically whenever the Brewfile changes
+(it's keyed to the file's hash). `--no-upgrade` means it only installs what's
+absent — it never upgrades or uninstalls. Add/remove a `brew "..."` line and
+`chezmoi apply` to sync.
 
 ## What's deliberately NOT tracked (see `.chezmoiignore`)
 
