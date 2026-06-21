@@ -1,0 +1,27 @@
+{
+  "attribution": {
+    "commit": "",
+    "pr": ""
+  },
+  "permissions": {
+    "allow": [
+      "Bash(npx tsc:*)",
+      "Bash(echo \"EXIT=$?\")",
+      "Bash(npm run:*)",
+      "Bash(npm test:*)",
+      "Bash(gh pr *)"
+    ],
+    "defaultMode": "bypassPermissions"
+  },
+  "statusLine": {
+    "type": "command",
+    "command": "input=$(cat); model=$(echo \"$input\" | jq -r '.model.display_name // \"Unknown\"'); cwd=$(echo \"$input\" | jq -r '.workspace.current_dir // \"~\"'); used_pct=$(echo \"$input\" | jq -r '.context_window.used_percentage // empty'); cd \"$cwd\" 2>/dev/null; branch=$(git -c core.fileMode=false symbolic-ref --short HEAD 2>/dev/null || echo \"\"); parts=(\"$model\"); [ -n \"$branch\" ] && parts+=(\"[$branch]\"); if [ -n \"$used_pct\" ]; then bar_width=10; used_int=${used_pct%.*}; filled=$((used_int * bar_width / 100)); empty=$((bar_width - filled)); bar=\"\"; for ((i=0; i<filled; i++)); do bar+=\"█\"; done; for ((i=0; i<empty; i++)); do bar+=\"░\"; done; parts+=(\"$bar ${used_pct}%\"); fi; printf \"%s\" \"${parts[0]}\"; for ((i=1; i<${#parts[@]}; i++)); do printf \" | %s\" \"${parts[i]}\"; done; printf \"\\n\""
+  },
+  "enabledPlugins": {},
+  "effortLevel": "medium",
+  "skipDangerousModePermissionPrompt": true,
+  "theme": "auto",
+  "remoteControlAtStartup": false,
+  "agentPushNotifEnabled": true,
+  "skipAutoPermissionPrompt": true
+}
