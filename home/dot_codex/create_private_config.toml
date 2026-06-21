@@ -1,0 +1,15 @@
+# Initial Codex baseline — seeded by chezmoi only when ~/.codex/config.toml is
+# absent (create-once). The Codex app rewrites this file at runtime, adding
+# machine/private state ([projects], [marketplaces], [mcp_servers], notify
+# paths, model-availability counters); chezmoi never touches it again once it
+# exists. Keep only portable preferences here — no absolute paths, no project
+# trust lists (this repo is public).
+
+personality = "pragmatic"
+model = "gpt-5.5"
+model_reasoning_effort = "medium"
+approval_policy = "on-request"
+sandbox_mode = "danger-full-access"
+
+[tui]
+status_line = ["model-with-reasoning", "current-dir", "git-branch", "context-remaining"]
