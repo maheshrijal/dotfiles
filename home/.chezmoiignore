@@ -1,11 +1,7 @@
-# Machine-local fish state — never replicate
+# Machine-local state — never replicate
 .config/fish/fish_variables
 .config/fish/completions
 .config/fish/*.bak*
 
-# Work-only configs — live only on the work device, never in this public repo
-.config/fish/functions/aws-mfa.fish
-.config/fish/functions/vault-use.fish
-.config/fish/functions/vaultlogin-stage.fish
-.config/fish/functions/vaultlogin-prod.fish
-.config/fish/conf.d/work-env.fish
+# Environment-specific configs are kept local and managed out-of-band; not tracked here.
+.config/fish/conf.d/*.local.fish
