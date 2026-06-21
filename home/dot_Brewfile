@@ -38,7 +38,7 @@ brew "fastfetch"
 
 # GPG (required for signed git commits)
 brew "gnupg"
-brew "pinentry-mac"
+brew "pinentry-mac" if OS.mac?
 
 # Databases
 brew "mysql-client"

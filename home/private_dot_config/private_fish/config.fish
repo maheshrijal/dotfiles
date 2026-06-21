@@ -6,8 +6,17 @@ set -gx BUN_INSTALL "$HOME/.bun"
 # Always-present paths (fish_add_path is idempotent — no duplicates)
 fish_add_path -g $HOME/.local/bin $BUN_INSTALL/bin
 
+# Homebrew shell environment
+if test -x /opt/homebrew/bin/brew
+    /opt/homebrew/bin/brew shellenv fish | source
+else if test -x /usr/local/bin/brew
+    /usr/local/bin/brew shellenv fish | source
+else if test -x /home/linuxbrew/.linuxbrew/bin/brew
+    /home/linuxbrew/.linuxbrew/bin/brew shellenv fish | source
+end
+
 # Optional tool paths — only added when the directory actually exists
-for dir in $HOME/.grok/bin $HOME/.antigravity/antigravity/bin /opt/homebrew/opt/mysql-client/bin
+for dir in $HOME/.grok/bin $HOME/.antigravity/antigravity/bin /opt/homebrew/opt/mysql-client/bin /home/linuxbrew/.linuxbrew/opt/mysql-client/bin
     test -d $dir; and fish_add_path -g $dir
 end
 
@@ -17,7 +26,7 @@ test -f ~/.orbstack/shell/init2.fish; and source ~/.orbstack/shell/init2.fish 2>
 # ── Interactive sessions ─────────────────────────────────────────────────────
 if status is-interactive
     set -g fish_greeting
-    starship init fish | source
+    command -q starship; and starship init fish | source
 
     # git
     abbr -a gs 'git status'

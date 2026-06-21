@@ -1,13 +1,16 @@
+{{- $gitSigningKey := get . "gitSigningKey" -}}
 [user]
 	name = maheshrijal
 	email = 62394512+maheshrijal@users.noreply.github.com
+{{- if $gitSigningKey }}
 	signingkey = {{ .gitSigningKey }}
 [gpg]
-	program = {{ if eq .chezmoi.os "darwin" }}/opt/homebrew/bin/gpg{{ else }}/usr/bin/gpg{{ end }}
+	program = {{ if eq .chezmoi.os "darwin" }}/opt/homebrew/bin/gpg{{ else }}gpg{{ end }}
 [commit]
 	gpgsign = true
 [tag]
 	gpgsign = true
+{{- end }}
 [core]
 	editor = vim
 [push]
