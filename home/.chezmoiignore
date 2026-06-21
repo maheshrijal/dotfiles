@@ -1,0 +1,7 @@
+# Machine-local state — never replicate
+.config/fish/fish_variables
+.config/fish/completions
+.config/fish/*.bak*
+
+# Environment-specific configs are kept local and managed out-of-band; not tracked here.
+.config/fish/conf.d/*.local.fish

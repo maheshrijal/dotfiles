@@ -1,0 +1,23 @@
+"$schema" = "https://starship.rs/config-schema.json"
+
+[kubernetes]
+disabled = false
+symbol = "☸ "
+format = '[$symbol$context( \($namespace\))]($style) '
+style = "bold blue"
+
+[[kubernetes.contexts]]
+context_pattern = ".*([Pp][Rr][Oo][Dd]|[Pp][Rr][Oo][Dd][Uu][Cc][Tt][Ii][Oo][Nn]).*"
+style = "bold red"
+context_alias = "prod"
+
+[[kubernetes.contexts]]
+context_pattern = ".*([Ss][Tt][Aa][Gg][Ee]|[Ss][Tt][Aa][Gg][Ii][Nn][Gg]).*"
+style = "bold yellow"
+context_alias = "stage"
+
+[gcloud]
+disabled = true
+
+[aws]
+disabled = true
