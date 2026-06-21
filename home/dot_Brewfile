@@ -27,6 +27,7 @@ brew "fnm"
 # Cloud / infra / kubernetes
 brew "awscli"
 brew "kubernetes-cli"
+brew "kubecolor"
 brew "helm"
 brew "kubectx"
 
