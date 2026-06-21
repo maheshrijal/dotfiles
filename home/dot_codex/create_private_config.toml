@@ -13,17 +13,3 @@ sandbox_mode = "danger-full-access"
 
 [tui]
 status_line = ["model-with-reasoning", "current-dir", "git-branch", "context-remaining"]
-
-[desktop]
-ambient-suggestions-enabled = true
-preventSleepWhileRunning = true
-keepRemoteControlAwakeWhilePluggedIn = true
-conversationDetailMode = "STEPS_COMMANDS"
-
-[[skills.config]]
-name = "build-web-apps:supabase-postgres-best-practices"
-enabled = false
-
-[[skills.config]]
-name = "build-web-apps:stripe-best-practices"
-enabled = false
