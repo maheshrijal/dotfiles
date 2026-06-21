@@ -9,6 +9,8 @@
 "
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
+" fzf integration
+set rtp+=/opt/homebrew/opt/fzf
 
 " Show relative line numbers on the left.
 :set relativenumber

@@ -1,4 +1,6 @@
 # ── Environment & PATH (runs for all shells) ────────────────────────────────
+set -gx EDITOR vim
+set -gx VISUAL $EDITOR
 set -gx BUN_INSTALL "$HOME/.bun"
 
 # Always-present paths (fish_add_path is idempotent — no duplicates)
@@ -14,16 +16,20 @@ test -f ~/.orbstack/shell/init2.fish; and source ~/.orbstack/shell/init2.fish 2>
 
 # ── Interactive sessions ─────────────────────────────────────────────────────
 if status is-interactive
+    set -g fish_greeting
     starship init fish | source
 
     # git
     abbr -a gs 'git status'
     abbr -a gp 'git pull'
     abbr -a gpsh 'git push'
+    abbr -a gc 'git commit -asm'
 
     # claude
     abbr -a cs 'claude --model claude-sonnet-4-6'
     abbr -a co 'claude --model claude-opus-4-8'
+    abbr -a ccusage 'bunx ccusage'
+    abbr -a ccusage-codex 'bunx @ccusage/codex@latest'
 
     # eza
     if command -q eza
