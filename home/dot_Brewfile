@@ -1,0 +1,42 @@
+# Homebrew package manifest — installed via `brew bundle --global`.
+# Managed by chezmoi; run `chezmoi apply` (or `brew bundle --global`) to sync.
+
+# Shell / prompt / terminal
+brew "fish"
+brew "starship"
+brew "tmux"
+brew "bash"
+
+# File / search / navigation
+brew "eza"
+brew "bat"
+brew "fd"
+brew "ripgrep"
+brew "fzf"
+brew "tree"
+
+# Git / version control
+brew "gh"
+brew "jj"
+
+# Languages / runtimes
+brew "go"
+brew "uv"
+brew "fnm"
+
+# Cloud / infra / kubernetes
+brew "awscli"
+brew "kubernetes-cli"
+brew "helm"
+brew "kubectx"
+
+# System monitors
+brew "btop"
+brew "fastfetch"
+
+# GPG (required for signed git commits)
+brew "gnupg"
+brew "pinentry-mac"
+
+# Misc
+brew "yq"
