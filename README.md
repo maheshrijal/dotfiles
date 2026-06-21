@@ -6,8 +6,8 @@ Personal dotfiles managed with [chezmoi](https://chezmoi.io). macOS + fish.
 
 ```sh
 brew install chezmoi
-git clone git@github.com:maheshrijal/dotfiles.git ~/code/maheshrijal/dotfiles
-chezmoi init --source ~/code/maheshrijal/dotfiles   # prompts for this machine's GPG signing key
+git clone git@github.com:maheshrijal/dotfiles.git ~/code/dotfiles
+chezmoi init --source ~/code/dotfiles   # prompts for this machine's GPG signing key
 chezmoi apply
 ```
 
