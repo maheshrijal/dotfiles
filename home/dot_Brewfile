@@ -30,6 +30,7 @@ brew "kubernetes-cli"
 brew "kubecolor"
 brew "helm"
 brew "kubectx"
+brew "kustomize"
 
 # System monitors
 brew "btop"
@@ -39,5 +40,12 @@ brew "fastfetch"
 brew "gnupg"
 brew "pinentry-mac"
 
+# Databases
+brew "mysql-client"
+
 # Misc
+brew "actionlint"
+brew "doggo"
+brew "jq"
+brew "just"
 brew "yq"
