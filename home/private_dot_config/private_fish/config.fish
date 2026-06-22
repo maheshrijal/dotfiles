@@ -3,22 +3,34 @@ set -gx EDITOR vim
 set -gx VISUAL $EDITOR
 set -gx BUN_INSTALL "$HOME/.bun"
 
-# Always-present paths (fish_add_path is idempotent — no duplicates)
-fish_add_path -g $HOME/.local/bin $BUN_INSTALL/bin
+# Tool paths — only added when the directory actually exists. Keep this static:
+# external init commands run on every shell startup and are noticeably slower.
+set -l path_candidates $HOME/.local/bin $BUN_INSTALL/bin
 
-# Homebrew shell environment
-if test -x /opt/homebrew/bin/brew
-    /opt/homebrew/bin/brew shellenv fish | source
-else if test -x /usr/local/bin/brew
-    /usr/local/bin/brew shellenv fish | source
-else if test -x /home/linuxbrew/.linuxbrew/bin/brew
-    /home/linuxbrew/.linuxbrew/bin/brew shellenv fish | source
+if test -d /System/Library/CoreServices
+    # macOS: avoid probing /home; it can be slow on some systems.
+    set -a path_candidates \
+        /opt/homebrew/bin \
+        /opt/homebrew/sbin \
+        /usr/local/bin \
+        /usr/local/sbin \
+        /opt/homebrew/opt/mysql-client/bin
+else
+    set -a path_candidates \
+        /home/linuxbrew/.linuxbrew/bin \
+        /home/linuxbrew/.linuxbrew/sbin \
+        /home/linuxbrew/.linuxbrew/opt/mysql-client/bin
 end
 
-# Optional tool paths — only added when the directory actually exists
-for dir in $HOME/.grok/bin $HOME/.antigravity/antigravity/bin /opt/homebrew/opt/mysql-client/bin /home/linuxbrew/.linuxbrew/opt/mysql-client/bin
-    test -d $dir; and fish_add_path -g $dir
+set -a path_candidates $HOME/.grok/bin $HOME/.antigravity/antigravity/bin
+
+set -l path_prefixes
+for dir in $path_candidates
+    if test -d $dir; and not contains -- $dir $PATH
+        set -a path_prefixes $dir
+    end
 end
+test (count $path_prefixes) -gt 0; and set -gx PATH $path_prefixes $PATH
 
 # OrbStack CLI integration (managed by OrbStack)
 test -f ~/.orbstack/shell/init2.fish; and source ~/.orbstack/shell/init2.fish 2>/dev/null
