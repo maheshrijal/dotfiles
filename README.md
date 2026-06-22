@@ -78,6 +78,20 @@ everything missing, and the script re-runs automatically whenever the Brewfile
 changes. `--no-upgrade` means it only installs what's absent — it never upgrades
 or uninstalls. Add/remove a `brew "..."` line and `chezmoi apply` to sync.
 
+## Shell startup
+
+Fast shell startup is intentional. The checked-in fish config should stay near
+the current live baseline: under ~30ms median for interactive startup and under
+~20ms median for non-interactive startup on this machine.
+
+```sh
+just bench-shell
+```
+
+Startup config should avoid external commands unless they are interactive-only
+or clearly justified. Prefer static, guarded path additions over subprocess init
+hooks for tools that only need to be on `PATH`.
+
 ## What's deliberately NOT tracked (see `.chezmoiignore`)
 
 - `fish_variables` — machine-local universal vars (incl. transient tokens)
