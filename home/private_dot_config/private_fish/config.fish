@@ -35,7 +35,7 @@ if status is-interactive
     abbr -a gc 'git commit -asm'
 
     # claude
-    abbr -a cs 'claude --model claude-sonnet-4-6'
+    abbr -a cs 'claude --model claude-sonnet-5'
     abbr -a co 'claude --model claude-opus-4-8'
 
     # eza
