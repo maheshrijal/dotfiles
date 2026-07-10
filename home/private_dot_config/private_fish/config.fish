@@ -45,3 +45,13 @@ if status is-interactive
         abbr -a ll 'eza -bghl --git --color=automatic'
     end
 end
+
+# Pi
+fish_add_path "/Users/mahesh/.local/share/fnm/node-versions/v24.15.0/installation/bin"
+
+# pnpm
+set -gx PNPM_HOME "/Users/mahesh/Library/pnpm"
+if not string match -q -- $PNPM_HOME $PATH
+  set -gx PATH "$PNPM_HOME" $PATH
+end
+# pnpm end

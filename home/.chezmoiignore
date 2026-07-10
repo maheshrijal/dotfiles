@@ -1,4 +1,8 @@
 # Machine-local state — never replicate
+.claude
+.claude/**
+.codex
+.codex/**
 .config/fish/fish_variables
 .config/fish/completions
 .config/fish/*.bak*
