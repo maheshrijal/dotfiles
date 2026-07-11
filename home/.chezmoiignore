@@ -1,8 +1,9 @@
-# Machine-local state — never replicate
-.claude
-.claude/**
-.codex
-.codex/**
+# Machine-local state — never replicate, EXCEPT the portable prompt files
+# (CLAUDE.md / AGENTS.md) which are tracked; per-machine configs stay local.
+.claude/*
+.codex/*
+!.claude/CLAUDE.md
+!.codex/AGENTS.md
 .config/fish/fish_variables
 .config/fish/completions
 .config/fish/*.bak*
