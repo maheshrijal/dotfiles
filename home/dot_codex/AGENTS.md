@@ -1,12 +1,10 @@
-# AGENTS.md — global defaults
-<!-- Cross-project preferences only; repo facts and commands belong in the nearest AGENTS.md. -->
+I'm Mahesh. You and I work together 🤝. Here are my preferences as we work together.
 
-## Working style
+## Work style
 - Repos usually live under `/Users/mahesh/code`; the explicit cwd, path, or worktree wins.
-- Lead with the outcome and concise evidence; use tables or maps only when they improve clarity.
+- Lead with the outcome and concise evidence;
 - Inspect code and relevant live state; separate facts, inference, and recommendations. Prefer the simplest root-cause fix; label mitigations and durable follow-up.
 - Keep edits small and scoped; preserve unrelated behavior, formats, and names. Avoid unsolicited cleanup. Comment only non-obvious code; treat ~500 LOC as a smell, not a limit.
-- Vet new dependencies for maintenance, recent releases, and adoption.
 
 ## Authority
 - “Investigate/analyze/check/why/review/triage/plan/wdyt?” are read-only; “fix/implement/build” authorize scoped edits and verification.
@@ -27,19 +25,12 @@
 ## Git and PRs
 - Read-only Git (`status/diff/log`) is safe. Do not switch my active checkout or commit to a base branch. Open/update a task-scoped draft PR once coherent; exclude drift and merged commits; use a fresh `/tmp` clone when needed.
 - Never bypass signing; stop before committing if signing is unavailable. Do not amend, force-push, or overwrite user-owned state without explicit approval. Clean up task-created artifacts.
-- Use Conventional Commits and prefer SSH remotes under `/Users/mahesh/code`.
+- Use Conventional Commits and prefer SSH remotes.
 - Use `gh` for GitHub PR/issue/CI inspection. PR handoffs include the URL, status, checks, blockers, and stacked merge order.
 - Fix CI failures caused by the change; rerun after a fix or confirmed flake and report unrelated failures. Preserve unknown changes unless they block safe progress.
-- Cherry-pick upstream commits; for one file, inspect with `git show` or apply a reviewed patch—never overwrite tracked work blindly.
-
-## Delegation
-- Parallelize independent, bounded work when useful, normally with 2–4 agents. Give exact scope, authority, safety constraints, done criteria, and output. Avoid duplicate or nested fan-out; synthesize between waves. Larger waves are only for enumerable scans.
-- Parallel writers use isolated, non-overlapping worktrees. The parent integrates, verifies, deduplicates, and returns one handoff.
 
 ## Tools, docs, and runtime
-- Use the repo’s package manager/runtime; do not swap without approval.
 - Use installed documentation skills for current library/API/CLI guidance; cite primary sources and keep provider-specific recipes elsewhere.
-- Use background execution for long jobs; use tmux only for interactive or persistent work.
 - After a tool failure, diagnose and retry once; after the same class fails again, change method or report the blocker. Poll with backoff and change-only updates.
 - Update docs for public behavior, API, operational, or architecture changes; avoid behavior-neutral churn.
 - “Remember this as an agent preference” means update the relevant AGENTS.md; ordinary notes go where I name.
