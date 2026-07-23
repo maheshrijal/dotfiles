@@ -40,9 +40,9 @@ if status is-interactive
 
     # eza
     if command -q eza
-        abbr -a la 'eza -abghl --git --color=automatic'
-        abbr -a al 'eza -abghl --git --color=automatic'
-        abbr -a ll 'eza -bghl --git --color=automatic'
+        abbr -a la 'eza -abghl --git --color=auto'
+        abbr -a al 'eza -abghl --git --color=auto'
+        abbr -a ll 'eza -bghl --git --color=auto'
     end
 end
 
