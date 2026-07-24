@@ -33,6 +33,7 @@ if status is-interactive
     abbr -a gp 'git pull'
     abbr -a gpsh 'git push'
     abbr -a gc 'git commit -asm'
+    abbr -a gd 'git diff'
 
     # claude
     abbr -a cs 'claude --model claude-sonnet-5'
