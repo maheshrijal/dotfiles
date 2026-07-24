@@ -1,3 +1,3 @@
-function gcb --description 'Create and check out a new git branch'
-    git checkout -b $argv
+function gcb --description 'Checkout a git branch'
+    git checkout $argv
 end
