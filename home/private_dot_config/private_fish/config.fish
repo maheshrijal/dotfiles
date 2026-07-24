@@ -16,7 +16,7 @@ else if test -x /home/linuxbrew/.linuxbrew/bin/brew
 end
 
 # Optional tool paths — only added when the directory actually exists
-for dir in $HOME/.grok/bin $HOME/.antigravity/antigravity/bin /opt/homebrew/opt/mysql-client/bin /home/linuxbrew/.linuxbrew/opt/mysql-client/bin
+for dir in $HOME/.antigravity/antigravity/bin /opt/homebrew/opt/mysql-client/bin /home/linuxbrew/.linuxbrew/opt/mysql-client/bin
     test -d $dir; and fish_add_path -g $dir
 end
 
