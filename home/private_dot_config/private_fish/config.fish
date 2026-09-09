@@ -47,12 +47,19 @@ if status is-interactive
     end
 end
 
-# Pi
-fish_add_path "/Users/mahesh/.local/share/fnm/node-versions/v24.15.0/installation/bin"
-
-# pnpm
-set -gx PNPM_HOME "/Users/mahesh/Library/pnpm"
-if not string match -q -- $PNPM_HOME $PATH
-  set -gx PATH "$PNPM_HOME" $PATH
+# pnpm — honor a machine-local override, otherwise use the platform default.
+if not set -q PNPM_HOME; or test -z "$PNPM_HOME"
+    switch (uname)
+        case Darwin
+            set -gx PNPM_HOME "$HOME/Library/pnpm"
+        case '*'
+            if set -q XDG_DATA_HOME; and test -n "$XDG_DATA_HOME"
+                set -gx PNPM_HOME "$XDG_DATA_HOME/pnpm"
+            else
+                set -gx PNPM_HOME "$HOME/.local/share/pnpm"
+            end
+    end
 end
-# pnpm end
+if not contains -- "$PNPM_HOME" $PATH
+    set -gx PATH "$PNPM_HOME" $PATH
+end
