@@ -29,6 +29,18 @@ git clone git@github.com:maheshrijal/dotfiles.git ~/code/dotfiles
 `init` reads `.chezmoiroot` (→ `home/`) and generates `~/.config/chezmoi/chezmoi.toml`,
 pinning `sourceDir` to the clone.
 
+### Node.js and pnpm paths
+
+Node.js versions are selected by `fnm`; the fish config does not pin a machine-specific
+Node installation. Install and select a Node version separately with `fnm`.
+
+Fish adds `PNPM_HOME` to `PATH` without duplicates. It defaults to `~/Library/pnpm`
+on macOS and `${XDG_DATA_HOME:-~/.local/share}/pnpm` on Linux. An existing non-empty
+`PNPM_HOME` is preserved; machine-local overrides can live in
+`~/.config/fish/conf.d/*.local.fish`. This config sets paths; it does not install pnpm.
+When migrating an already-running shell with the old exported Mac path, run
+`set -e PNPM_HOME` before sourcing `~/.config/fish/config.fish`, or open a fresh SSH session.
+
 ## Git signing
 
 Git commit signing is deliberately deferred on new machines. Bootstrap first,
