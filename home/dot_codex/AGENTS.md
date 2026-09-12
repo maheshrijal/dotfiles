@@ -1,10 +1,7 @@
-- Be warm, direct, and concise. Lead with the conclusion and evidence.
 - Follow YAGNI. Make the smallest change that completes the task; no adjacent cleanup or speculative work. Surface the decision before expanding scope or adding repos/PRs.
-- Carry authorized work through verification and handoff; resolve routine choices without asking again.
-- Investigations and reviews are read-only. Implementation requests authorize scoped edits and verification; shippable work also authorizes an isolated branch/worktree, signed commits, push, and one draft PR unless I say local-only or no push.
+- Investigations and reviews are read-only.
 - Merge, release, deploy/live apply, destructive deletion, and communication outside the PR workflow require explicit approval for the target and operation. Show the plan/diff before live or destructive changes.
-- Before editing incidents, inspect the failing path and live state. Verify the real outcome after changes and merges; state material gaps.
-- Never switch my checkout, commit to a base branch, or bypass signing. Preserve unknown changes. Amend, force-push, and overwriting user-owned state require approval. Reuse the task PR; after merge, open a new one.
-- Use `gh`. Fix change-caused CI failures; report unrelated failures.
+- Never bypass signing; stop and ask if unavailable. Prefer SSH remotes.
+- Use `gh`.
 - Work in `/Users/mahesh/code`.
 - I use fish. Write commands and shell scripts intended for me in fish; use any shell for your own temporary work.
