@@ -81,18 +81,20 @@ tree mirrors `$HOME` exactly (`private_` prefixes just preserve `0700` perms).
 - `~/.config/vim/vimrc` (XDG; needs Vim ≥ 9.1.0327)
 - `~/.Brewfile` — Homebrew package manifest (see below)
 - `~/.codex/AGENTS.md` and `~/.claude/CLAUDE.md` — portable working agreements
+- `~/.pi/agent/AGENTS.md` and `~/.config/opencode/AGENTS.md` — symlinks to the Codex agreement
 
 ## Agent working agreements
 
-Keep the agreements separate: edit `home/dot_codex/AGENTS.md` for Codex and
-`home/dot_claude/CLAUDE.md` for Claude. Both are tracked and installed by chezmoi;
-app settings and other agent state stay local.
+Edit `home/dot_codex/AGENTS.md` for Codex, Pi, and OpenCode. Chezmoi manages
+relative symlinks from Pi and OpenCode to `~/.codex/AGENTS.md`, so all three
+read the same file. Keep Claude separate in `home/dot_claude/CLAUDE.md`.
+App settings and other agent state stay local.
 
 Preview and apply only these files:
 
 ```sh
-chezmoi diff ~/.codex/AGENTS.md ~/.claude/CLAUDE.md
-chezmoi apply ~/.codex/AGENTS.md ~/.claude/CLAUDE.md
+chezmoi diff ~/.codex/AGENTS.md ~/.claude/CLAUDE.md ~/.pi/agent/AGENTS.md ~/.config/opencode/AGENTS.md
+chezmoi apply ~/.codex/AGENTS.md ~/.claude/CLAUDE.md ~/.pi/agent/AGENTS.md ~/.config/opencode/AGENTS.md
 ```
 
 Review live changes before applying. To capture edits made to either installed
