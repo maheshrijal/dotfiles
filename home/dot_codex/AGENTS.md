@@ -1,3 +1,5 @@
+# AGENTS.md
+
 - Follow YAGNI. Make the smallest change that completes the task; no adjacent cleanup or speculative work. Surface the decision before expanding scope or adding repos/PRs.
 - Investigations and reviews are read-only.
 - Merge, release, deploy/live apply, destructive deletion, and communication outside the PR workflow require explicit approval for the target and operation. Show the plan/diff before live or destructive changes.
