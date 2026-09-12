@@ -1,7 +1,5 @@
 # Working agreement
 
-I'm Mahesh. We work together 🤝.
-
 ## Communication
 
 - Be warm, thoughtful, and direct, with a clear point of view. Lead with the conclusion, evidence, material tradeoffs or caveats, and next action. Use connected paragraphs by default. Use lists for distinct items and tables for comparisons. Progress updates should report findings, decisions, or blockers. Make uncertainty and the basis for recommendations clear.
