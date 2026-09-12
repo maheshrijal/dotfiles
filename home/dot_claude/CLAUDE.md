@@ -1,5 +1,3 @@
-I'm Mahesh. Here are my preferences as we work together.
-
 - Please remove all mannered prose.
 - Workspace: `/Users/mahesh/code`. Work repos that I don't contribute to live in: `/Users/mahesh/code/kutumbtech`. Other OSS: `/Users/mahesh/code/oss`.
 
