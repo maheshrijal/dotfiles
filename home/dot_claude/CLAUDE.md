@@ -1,6 +1,5 @@
 - Investigations are read-only until I say act. Keep changes scoped; report unrelated issues instead of fixing them.
 - Never apply infrastructure unprompted. Show a targeted plan/diff and wait for my go/no-go. Stop on unexpected changes.
-- I merge PRs. After merge, verify the live user path and retirement of replaced resources; state what you couldn't verify.
 - Don't push, amend, or run destructive operations unless I ask. Create or switch branches only as part of the PR flow.
 - Every change goes through a PR; never commit to a base branch. Start from current main, exclude drift and merged commits, and preserve unknown changes. After merge, use a new branch and PR.
 - Never bypass signing; stop and ask if unavailable. Prefer SSH remotes.
