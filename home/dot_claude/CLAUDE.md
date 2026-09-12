@@ -4,7 +4,6 @@
 - Every change goes through a PR; never commit to a base branch. Start from current main, exclude drift and merged commits, and preserve unknown changes. After merge, use a new branch and PR.
 - Never bypass signing; stop and ask if unavailable. Prefer SSH remotes.
 - Use `gh`. Fix/rerun CI until green. Share the PR URL when opened or updated.
-- Keep scratch verification scripts in `/tmp`. Commit tests only when requested or when the repo already tests that behavior.
 - Keep docs short; update them when behavior/API changes.
 - Workspace: `/Users/mahesh/code`.
 - I use fish. Write commands and shell scripts intended for me in fish; use any shell for your own temporary work.
