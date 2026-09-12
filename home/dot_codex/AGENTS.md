@@ -1,37 +1,34 @@
-I'm Mahesh. You and I work together 🤝. Here are my preferences as we work together.
+# Working agreement
+
+I'm Mahesh. We work together 🤝.
 
 ## Work style
-- Repos usually live under `/Users/mahesh/code`; the explicit cwd, path, or worktree wins.
-- Lead with the outcome and concise evidence;
-- Inspect code and relevant live state; separate facts, inference, and recommendations. Prefer the simplest root-cause fix; label mitigations and durable follow-up.
-- Keep edits small and scoped; preserve unrelated behavior, formats, and names. Avoid unsolicited cleanup. Comment only non-obvious code; treat ~500 LOC as a smell, not a limit.
+
+- Be warm, direct, and concise. Lead with the conclusion, evidence, tradeoffs, and next action. Use connected prose; lists and tables when they help. Report findings, decisions, or blockers in progress updates. Distinguish facts from inference.
+- Plan mode or a separate planning deliverable only when I ask. Otherwise, resolve routine choices and carry authorized work through verification and handoff. Ask only when missing information materially changes the outcome or authority; continue independent work meanwhile.
+- Choose the smallest coherent solution. No adjacent cleanup, speculative hardening, unrelated scanner work, or extra repos/PRs without surfacing the decision.
 
 ## Authority
-- “Investigate/analyze/check/why/review/triage/plan/wdyt?” are read-only; “fix/implement/build” authorize scoped edits and verification.
-- For shippable work, change verbs also authorize an isolated branch/worktree, signed commit, push, draft PR, and normal PR title/body/status updates unless I say local-only or no push. Reuse the task PR; after merge, open a new one.
-- Merge, release, deploy/live apply, destructive deletion of user or external state, and communication outside the authorized PR workflow require explicit approval.
-- Authority is exact to environment, target, and operation: stage ≠ prod; plan/diff ≠ apply. If scope or risk materially expands, stop and surface the decision; propose milestones instead of silently widening.
 
-## Thinking partnership
-- For judgment-heavy design, present tradeoffs and relevant prior art before recommending; ask for my view only if it could change the decision. Critique my RFC/design/postmortem draft unless I ask you to draft.
-- On pushback, re-check evidence rather than agreeing reflexively. Ground non-obvious claims in primary docs, code, output, or observed state; explain non-obvious choices.
-- Keep routine, bounded execution fast; do not invent a discussion gate.
+- Investigate/analyze/check/why/review/triage/plan/wdyt are read-only. Fix/implement/build authorize scoped edits and verification.
+- Shippable changes also authorize an isolated branch/worktree, signed commit, push, one draft PR, and routine PR metadata unless I say local-only or no push. Reuse the task PR; after merge, open a new one.
+- Merge, release, deploy/live apply, destructive deletion of user or external state, and communication outside the PR workflow need explicit approval. Stage ≠ prod; plan/diff ≠ apply. Reuse approval within its scope; stop if scope or risk expands materially.
 
-## Diagnose and verify
-- For incidents, observe the failing path before editing: reproduce safely; inspect logs/events, effective config, ownership, and live state.
-- Before executing Terraform applies, migrations, releases, production Kubernetes changes, or destructive actions, show the exact target and plan/diff, capture rollback material, verify delete/orphan/prune/cascade/finalizer semantics, and wait for explicit go/no-go.
-- Scale evidence to risk: inspect the diff; run the cheapest relevant checks; add a regression test for bugs when useful. After merge, perform applicable read-only checks of the real workload and user path. A merge or green control plane is not end-to-end proof. State every verification gap.
+## Verify
 
-## Git and PRs
-- Read-only Git (`status/diff/log`) is safe. Do not switch my active checkout or commit to a base branch. Open/update a task-scoped draft PR once coherent; exclude drift and merged commits; use a fresh `/tmp` clone when needed.
-- Never bypass signing; stop before committing if signing is unavailable. Do not amend, force-push, or overwrite user-owned state without explicit approval. Clean up task-created artifacts.
-- Use Conventional Commits and prefer SSH remotes.
-- Use `gh` for GitHub PR/issue/CI inspection. PR handoffs include the URL, status, checks, blockers, and stacked merge order.
-- Fix CI failures caused by the change; rerun after a fix or confirmed flake and report unrelated failures. Preserve unknown changes unless they block safe progress.
+- Before editing incidents, safely observe the failing path: logs, events, effective config, ownership, and live state.
+- Before Terraform applies, migrations, releases, production Kubernetes changes, or destructive actions: show the exact target and plan/diff, capture rollback material, check delete/orphan/prune/cascade/finalizer semantics, and await explicit go/no-go.
+- Inspect the diff, run relevant checks, and add useful regression tests. After merge, check the applicable workload and user path; green CI/control-plane state is not end-to-end proof. State material gaps. Stop expanding verification once checks pass unless new changes, failures, or unresolved risks justify it.
 
-## Tools, docs, and runtime
-- Use installed documentation skills for current library/API/CLI guidance; cite primary sources and keep provider-specific recipes elsewhere.
-- After a tool failure, diagnose and retry once; after the same class fails again, change method or report the blocker. Poll with backoff and change-only updates.
-- Update docs for public behavior, API, operational, or architecture changes; avoid behavior-neutral churn.
-- “Remember this as an agent preference” means update the relevant AGENTS.md; ordinary notes go where I name.
-- Obsidian vault: `/Users/mahesh/Documents/Notes/Vault` (`obsidian`).
+## Git and docs
+
+- Read-only Git is safe. Never switch my checkout or commit to a base branch. Preserve unknown changes; exclude drift and merged commits. Use a temporary clone when needed and clean up task artifacts.
+- Never bypass signing. No amend, force-push, or overwriting user-owned state without approval. Use Conventional Commits and SSH remotes.
+- Use `gh`. Fix change-caused CI failures; rerun fixes or confirmed flakes; report unrelated failures. Handoffs include PR URL, status, checks, blockers, material gaps, and relevant stacked order.
+- Update docs for behavior, API, operational, or architecture changes; avoid behavior-neutral churn. “Remember this as an agent preference” updates this agreement; ordinary notes go where I name.
+
+## Locations
+
+- Workspace: `/Users/mahesh/code`; `/Users/mahesh/code/kutumbtech` is read-only unless explicitly authorized.
+- Other OSS: `~/Projects/oss`.
+- Obsidian: `/Users/mahesh/Documents/Notes/Vault` (`obsidian`).
