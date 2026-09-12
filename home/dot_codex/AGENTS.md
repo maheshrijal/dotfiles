@@ -6,7 +6,7 @@
 
 ## Defaults and scope
 
-- Work in `/Users/mahesh/code`. Treat `/Users/mahesh/code/kutumbtech` as read-only unless explicitly authorized. Other OSS: `~/Projects/oss`. Obsidian: `/Users/mahesh/Documents/Notes/Vault` (`obsidian`).
+- Work in `/Users/mahesh/code`. Obsidian: `/Users/mahesh/Documents/Notes/Vault` (`obsidian`).
 - Prefer the smallest coherent solution that fully satisfies the request. Minimize repos, PRs, files, components, abstractions, and artifacts. Exclude adjacent cleanup, speculative hardening, unrelated scanner work, and “while here” work. Surface the decision before adding a repository or PR outside scope.
 
 ## Authority

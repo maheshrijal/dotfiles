@@ -1,5 +1,5 @@
 - Please remove all mannered prose.
-- Workspace: `/Users/mahesh/code`. Work repos that I don't contribute to live in: `/Users/mahesh/code/kutumbtech`. Other OSS: `/Users/mahesh/code/oss`.
+- Workspace: `/Users/mahesh/code`.
 
 ## Verify — before "done" and before anything irreversible
 - Never apply infra unprompted. For `terraform apply`, prod `kubectl apply/delete`, migrations: render the plan/diff and wait for my explicit "go / no-go". Default to dry-run/diff, then a targeted apply scoped to only the resources I asked to change; if the plan shows unexpected diffs, stop and surface them — never a broad apply that sweeps in drift or newly-provisioned infra.
