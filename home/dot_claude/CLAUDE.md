@@ -1,28 +1,33 @@
-# Working agreement
+I'm Mahesh. Here are my preferences as we work together.
 
-I'm Mahesh. Keep prose plain and concise.
+- Please remove all mannered prose.
+- Workspace: `/Users/mahesh/code`. Work repos that I don't contribute to live in: `/Users/mahesh/code/kutumbtech`. Other OSS: `/Users/mahesh/code/oss`.
 
-## Scope and authority
+## Verify — before "done" and before anything irreversible
+- Never apply infra unprompted. For `terraform apply`, prod `kubectl apply/delete`, migrations: render the plan/diff and wait for my explicit "go / no-go". Default to dry-run/diff, then a targeted apply scoped to only the resources I asked to change; if the plan shows unexpected diffs, stop and surface them — never a broad apply that sweeps in drift or newly-provisioned infra.
+- I merge PRs myself. "Merged" is your cue to verify live state end-to-end (ArgoCD sync, pod ready, health check, startup logs) and confirm the old resource is retired — merge/sync ≠ done. Never declare done from PR state alone.
+- Investigation/triage is read-only until I say act — read commands only, state findings, then wait.
+- Prefer end-to-end verification; If you can't verify, say exactly what's blocking.
 
-- Investigations and triage are read-only. Fix/implement/build authorize scoped edits and verification. Report unrelated bugs, performance concerns, and cleanup as follow-ups; don't expand the change unless necessary for the task.
-- Shippable changes authorize an isolated branch/worktree, signed commit, push, one draft PR, and routine PR metadata unless I say local-only or no push. Reuse the task PR; after merge, open a new one.
-- I merge PRs. Merge, release, deploy/live apply, destructive deletion of user or external state, and communication outside the PR workflow need explicit approval. Stage ≠ prod; plan/diff ≠ apply. Stop if scope or risk expands materially.
+## Git
+- Safe by default: `status` / `diff` / `log` freely.
+- Don't push, amend, or run destructive ops (`reset --hard`, `clean`, `restore`, `rm`) unless I ask. Create or switch branches only as part of the PR flow below. A typed command ("pull and push") is consent for that command.
+- PRs are surgically scoped: fresh branch off main, rebase on main first (drop already-merged commits), include only the files this task touches — never drift or other agents' edits. Clone to /tmp if the tree is dirty.
+- Pre-existing bugs, perf concerns, or cleanup you notice while working: report them as follow-ups in the summary, don't fix them in this change unless the task cannot work without it. Keep scratch verification scripts under /tmp. Commit tests only where the task asks or the repo already tests that kind of change, sized like neighboring tests.
+- Paste the PR URL immediately after opening/updating a PR — don't wait to be asked.
+- Every change goes through a PR — never commit to a base branch. Follow-up on a merged PR => new branch + new PR.
+- Never bypass commit signing — stop and ask.
+- Commits: Conventional Commits (feat|fix|refactor|build|ci|chore|docs|style|perf|test).
+- Remotes under /Users/mahesh/code: prefer SSH;
+- Pulling a file in from upstream: land it on a scratch branch or stage a copy in /tmp, then cherry-pick it in — never overwrite a tracked file in place.
+- Unrecognized changes: assume another agent; stay on your scope.
 
-## Verify
+## Tools & runtime
+- GitHub: use `gh` (`gh pr view/diff`, `gh run list/view`) — never web-search a PR/issue URL. Rerun/fix CI till green.
+- "Make a note" => append to the repo's CLAUDE.md. 
 
-- Never apply infrastructure unprompted. Before Terraform applies, migrations, releases, production Kubernetes changes, or destructive actions: show the exact target and plan/diff, capture rollback material, check delete/orphan/prune/cascade/finalizer semantics, and await explicit go/no-go. Stop on unexpected diffs.
-- After merge, verify the applicable live user path, health, logs, and retirement of replaced resources. Merge or sync alone is not proof. State what couldn't be verified and why.
-- Keep scratch verification scripts in `/tmp`. Commit tests when requested or when the repo already tests that behavior, sized like neighboring tests.
+## Docs & locations
+- Keep notes short; update docs when behavior/API changes (no ship w/o docs). Add read_when hints on cross-cutting docs.
+- Obsidian vault: `/Users/mahesh/Documents/Notes/Vault` (CLI: `obsidian`).
 
-## Git and docs
-
-- Read-only Git is safe. Never switch my checkout or commit to a base branch. Preserve unknown changes; exclude drift and merged commits. Use a temporary clone when needed. Stage upstream files in a temporary location or scratch branch before integrating; don't overwrite tracked files blindly.
-- Never bypass signing. No amend, force-push, or overwriting user-owned state without approval. Use Conventional Commits and SSH remotes. Clean up task artifacts.
-- Use `gh` for GitHub, including PR/issue URLs. Fix change-caused CI failures; rerun fixes or confirmed flakes; report unrelated failures. Share the PR URL when opened or updated, with status, checks, blockers, and material gaps.
-- Update docs when behavior/API changes; keep notes short and add `read_when` hints to cross-cutting docs. “Remember this as an agent preference” updates this agreement; ordinary notes go where I name.
-
-## Locations
-
-- Workspace: `/Users/mahesh/code`; `/Users/mahesh/code/kutumbtech` is read-only unless explicitly authorized.
-- Other OSS: `~/Projects/oss`.
-- Obsidian: `/Users/mahesh/Documents/Notes/Vault` (`obsidian`).
+- I use fish. Write commands and shell scripts intended for me in fish; use any shell for your own temporary work.
