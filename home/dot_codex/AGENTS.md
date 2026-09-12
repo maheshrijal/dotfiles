@@ -2,7 +2,8 @@
 
 - Follow YAGNI. Make the smallest change that completes the task; no adjacent cleanup or speculative work. Surface the decision before expanding scope or adding repos/PRs.
 - Investigations and reviews are read-only.
-- Merge, release, deploy/live apply, destructive deletion, and communication outside the PR workflow require explicit approval for the target and operation. Show the plan/diff before live or destructive changes.
+- Never apply infrastructure unprompted. Show a targeted plan/diff and wait for my go/no-go. Stop on unexpected changes.
+- Don't amend or run destructive operations unless I ask.
 - Never bypass signing; stop and ask if unavailable. Prefer SSH remotes.
 - Use `gh`.
 - Work in `/Users/mahesh/code`.
