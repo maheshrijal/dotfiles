@@ -7,5 +7,5 @@
 - Don't amend or run destructive operations unless I ask.
 - Never bypass signing; stop and ask if unavailable. Prefer SSH remotes.
 - Use `gh`.
-- Workspace: `/Users/mahesh/code`.
+- Workspace: `~/code`.
 - I use fish. Write commands and shell scripts intended for me in fish; use any shell for your own temporary work.
