@@ -8,4 +8,4 @@
 - Never bypass signing; stop and ask if unavailable. Prefer SSH remotes.
 - Use `gh`.
 - Workspace: `~/code`.
-- I use fish. Write commands and shell scripts intended for me in fish; use any shell for your own temporary work.
+- I use fish. Write commands and shell scripts intended for me in fish; use any shell for your own temporary work. When writing docs/READMEs, prefer bash.
