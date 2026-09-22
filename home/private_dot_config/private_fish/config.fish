@@ -41,7 +41,7 @@ if status is-interactive
 
     # claude
     abbr -a cs 'claude --model claude-sonnet-5'
-    abbr -a co 'claude --model claude-opus-5'
+    abbr -a co 'claude --model claude-opus-5-5'
 
     # eza
     if command -q eza
