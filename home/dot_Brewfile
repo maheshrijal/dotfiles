@@ -14,10 +14,15 @@ brew "fd"
 brew "ripgrep"
 brew "fzf"
 brew "tree"
+brew "sd"
+brew "zoxide"
+brew "ast-grep"
+brew "gdu"
 
 # Git / version control
 brew "gh"
 brew "jj"
+brew "chezmoi"
 
 # Languages / runtimes
 brew "go"
@@ -46,6 +51,7 @@ brew "mysql-client"
 # Misc
 brew "actionlint"
 brew "doggo"
+brew "httpie"
 brew "jq"
 brew "just"
 brew "yq"
