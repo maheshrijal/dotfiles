@@ -5,7 +5,7 @@
 {{- if $gitSigningKey }}
 	signingkey = {{ .gitSigningKey }}
 [gpg]
-	program = {{ if eq .chezmoi.os "darwin" }}/opt/homebrew/bin/gpg{{ else }}gpg{{ end }}
+	format = ssh
 [commit]
 	gpgsign = true
 [tag]

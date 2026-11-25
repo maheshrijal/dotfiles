@@ -43,18 +43,19 @@ When migrating an already-running shell with the old exported Mac path, run
 
 ## Git signing
 
-Git commit signing is deliberately deferred on new machines. Bootstrap first,
-then import or create a GPG key. Once `gpg --list-secret-keys --keyid-format=long`
-shows the signing key, add it to `~/.config/chezmoi/chezmoi.toml`:
+Commits are signed with an SSH key. Signing is off on a new machine until you
+set it up. Bootstrap first, then add the machine's SSH public key to GitHub as a
+**Signing Key** (Settings → SSH and GPG keys → New SSH key). Then add the key to
+`~/.config/chezmoi/chezmoi.toml`:
 
 ```toml
 [data]
-    gitSigningKey = "YOUR_KEY_FINGERPRINT"
+    gitSigningKey = "~/.ssh/id_ed25519.pub"
 ```
 
 Then run `chezmoi apply`. The generated Git config will only set
-`user.signingkey`, `gpg.program`, `commit.gpgsign`, and `tag.gpgsign` when that
-machine-local key is present.
+`user.signingkey`, `gpg.format = ssh`, `commit.gpgsign`, and `tag.gpgsign` when
+that machine-local key is present.
 
 ## Day-to-day
 
