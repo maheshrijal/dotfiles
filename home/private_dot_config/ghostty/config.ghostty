@@ -1,0 +1,6 @@
+font-size = 13
+theme = dark:Monokai Pro,light:primary
+copy-on-select = clipboard
+keybind = shift+enter=text:\n
+window-width = 134
+window-height = 40
